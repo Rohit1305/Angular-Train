@@ -1,0 +1,97 @@
+<h1>App Component</h1>
+<hr>
+
+<div *ngIf="show;else elseblock">content to render is true</div>
+<ng-template #elseblock>conten to render when falsse</ng-template>
+
+<hr>
+<div *ngIf="show;then ifblock else elseblocks"></div>
+<ng-template #ifblock>render when true</ng-template>
+<ng-template #elseblocks> render when falsse</ng-template>
+<hr>
+
+<ng-template [ngIf]="color==='blue'">
+  <h1 style="color: blue;">Text in blue</h1>
+</ng-template>
+<ng-template [ngIf]="color==='red'">
+  <h1 style="color: red;">Text in red</h1>
+</ng-template>
+<ng-template [ngIf]="color==='green'">
+  <h1 style="color: green;">Text in blue</h1>
+</ng-template>
+<hr>
+
+<h1 *ngIf="color==='red'" style="color:red">Text in Red</h1>
+<h1 *ngIf="color==='blue'" style="color:blue">Text in blue</h1>
+<h1 *ngIf="color==='green'" style="color:green">Text in green</h1>
+<hr>
+
+<div [ngSwitch]="color">
+  <h1 *ngSwitchCase="'red'" style="color:red">Text in red</h1>
+  <h1 *ngSwitchCase="'blue'" style="color:blue">Text in blue</h1>
+  <h1 *ngSwitchCase="'green'" style="color:green">Text in green</h1>
+  <h1 *ngSwitchDefault style="color:orange">Text in orange</h1>
+</div>
+
+<hr>
+<h2>List of Players</h2>
+<ul>
+  <li *ngFor="let player of players;index as i">{{i}}:{{ player}}</li>
+</ul>
+
+<hr>
+<div class="container">
+  <h2>List of Workers</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let worker of workers">
+        <td>{{ worker.id }}</td>
+        <td>{{ worker.firstname }}</td>
+        <td>{{ worker.lastname }}</td>
+        <td>{{ worker.email }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<hr>
+
+<!-- to do app in angular  -->
+<div class="container">
+  <h2>Add and Remove Items</h2>
+  <div>
+    <input type="text" [(ngModel)]="inputValue">
+    <div>
+      <button class="btn btn-success" type="button" (click)="addItem()">Add</button>
+    </div>
+  </div>
+  <ul>
+    <li *ngFor="let item of items ;let i =index" (click)="removeItem(i)">
+      {{ item }}
+    </li>
+  </ul>
+</div>
+<hr>
+
+<div>
+  <input type="text" [(ngModel)]="newTask">
+  <button class="btn btn-primary" type="button" (click)="addTask()">Add Task</button>
+  <div class="row">
+    <h3>Completed Tasks</h3>
+    <ul >
+      <li  *ngFor="let task of completedTasks">
+        {{ task.title }}
+        <button class="btn btn-danger btn-sm float-right" (click)="deleteTask(task)">Delete</button>
+      </li>
+    </ul>
+  </div>
+</div>
+
+  <!-- <app-child> </app-child> -->

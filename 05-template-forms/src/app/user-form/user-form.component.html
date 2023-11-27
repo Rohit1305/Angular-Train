@@ -1,0 +1,42 @@
+
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <div class="mb-3">
+    <label for="username" class="form-label">Username</label>
+    <input type="text" class="form-control" id="username" ngModel name="username" required #username="ngModel">
+    <span class="form-text" *ngIf="username.touched && username.invalid && username.errors?.['required']">Username is required</span>
+</div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input
+          type="email"
+          class="form-control"
+          id="email"
+          ngModel
+          name="email"
+          required
+       
+          #email="ngModel"
+      >
+      <span class="form-text" *ngIf="email.touched && email.invalid">
+          <span *ngIf="email.errors?.['required']">Email is required</span>
+          <!--   minlength="2"pattern="^[a-zA-Z\s]*$" 
+          <span *ngIf="email.errors?.['minlength']">Email must be at least 2 characters long</span> -->
+          <!-- <span *ngIf="email.errors?.['pattern']">Invalid email format</span> -->
+      </span>
+  </div>
+    
+    <div class="mb-3">
+      <label for="exampleDropdown" class="form-label">Select an option</label>
+      <select class="form-select" id="exampleDropdown" ngModel name="selectNum" required>
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+      </select>
+    </div>
+  
+    <button [disabled]="f.status=='INVALID'" type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  
+
+

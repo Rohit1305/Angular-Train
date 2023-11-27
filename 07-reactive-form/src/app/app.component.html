@@ -1,0 +1,30 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label for="username" class="form-label">Username</label>
+    <input type="text" class="form-control" id="username" formControlName="username">
+    <p class="form-text" *ngIf="userForm.get('username')?.hasError('required') && userForm.get('username')?.touched">
+      Username is not valid</p>
+    <p class="form-text" *ngIf="userForm.get('username')?.hasError('minLength')">
+        Minimum length should be 6 </p>
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="email" formControlName="email">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleDropdown" class="form-label">Select an option</label>
+    <select class="form-select" id="exampleDropdown" formControlName="number">
+      <option value="option1">Option 1</option>
+      <option value="option2">Option 2</option>
+      <option value="option3">Option 3</option>
+    </select>
+  </div>
+  <div *ngFor="let gender of genders">
+    <label>
+      <input type="radio" name="gender" [value]="gender" formControlName="gender">{{ gender }}</label>
+  </div>
+
+  <button type="submit" [disabled]="!userForm.valid" class="btn btn-primary">Submit</button>
+  <button type="button" (onClick)="resetForm" class="btn btn-primary"> Reset</button>
+</form>

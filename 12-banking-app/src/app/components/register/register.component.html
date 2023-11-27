@@ -1,0 +1,130 @@
+<!-- <p>register works!</p> -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Page</title>
+    
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Registration</h2>
+                </div>
+                <div class="card-body">
+                   
+                    <form action="register" method="post">
+                        
+                        <!-- User Type -->
+                        <div class="mb-3">
+                            <label>User Type</label>
+                            <div class="form-check">
+                                <input class="form-check-input" [(ngModel)]="selectedUserType" type="radio" name="selectedUserType" id="customer" value="customer" checked>
+                                <label class="form-check-label" for="customer">
+                                    Customer
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" [(ngModel)]="selectedUserType" type="radio" name="selectedUserType" id="admin" value="admin">
+                                <label class="form-check-label" for="admin">
+                                    Admin
+                                </label>
+                            </div>
+                        </div>
+                        <!-- Common Fields -->
+                        <!-- <div class="mb-3">
+                            <label for="firstName" class="form-label">First Name</label>
+                            <input type="text" [(ngModel)]="firstName" class="form-control" id="firstName" name="firstName" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="lastName" class="form-label">Last Name</label>
+                            <input type="text" [(ngModel)]="lastName" class="form-control" id="lastName" name="lastName" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" [(ngModel)]="email" class="form-control" id="email" name="email" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" [(ngModel)]="password" class="form-control" id="password" name="password" required>
+                        </div> -->
+
+
+                        <!-- Admin Fields -->
+                        <div *ngIf="selectedUserType === 'admin'">
+                            <!-- Add admin-specific fields here -->
+                            <!-- For example, admin specific input fields -->
+                            <!-- <div class="mb-3">
+                                <label for="adminSpecificField" class="form-label">Admin Specific Field</label>
+                                <input type="text" [(ngModel)]="adminSpecificField" class="form-control" id="adminSpecificField" name="adminSpecificField" required>
+                            </div> -->
+                            <div class="mb-3">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" [(ngModel)]="admin.firstName" class="form-control" id="firstName" name="firstName" required>
+                            </div>
+    
+                            <div class="mb-3">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" [(ngModel)]="admin.lastName" class="form-control" id="lastName" name="lastName" required>
+                            </div>
+    
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" [(ngModel)]="admin.email" class="form-control" id="email" name="email" required>
+                            </div>
+    
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" [(ngModel)]="admin.password" class="form-control" id="password" name="password" required>
+                            </div>
+                        </div>
+
+                        <!-- Customer Fields -->
+                        <div *ngIf="selectedUserType === 'customer'">
+                            <!-- Add customer-specific fields here -->
+                            <!-- For example, customer specific input fields -->
+                            <!-- <div class="mb-3">
+                                <label for="customerSpecificField" class="form-label">Customer Specific Field</label>
+                                <input type="text" [(ngModel)]="customerSpecificField" class="form-control" id="customerSpecificField" name="customerSpecificField" required>
+                            </div> -->
+                            <div class="mb-3">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" [(ngModel)]="customer.firstName" class="form-control" id="firstName" name="firstName" required>
+                            </div>
+    
+                            <div class="mb-3">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" [(ngModel)]="customer.lastName" class="form-control" id="lastName" name="lastName" required>
+                            </div>
+    
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" [(ngModel)]="customer.email" class="form-control" id="email" name="email" required>
+                            </div>
+    
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" [(ngModel)]="customer.password" class="form-control" id="password" name="password" required>
+                            </div>
+                        </div>
+
+                        <button type="submit" (click)="register()" class="btn btn-primary">Register</button>
+                    </form>
+                    
+                    <div class="card-footer">
+                        <p>Already registered? <a href="user-login">Log in</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
